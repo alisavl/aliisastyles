@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Natural Knitwear · @aliisastyles</title>
+  <meta name="description" content="Cotton and wool blend sweaters from Zara Men.">
+  <style>
+    @font-face { font-family: "Neue Montreal"; src: url("Neue Montreal/NeueMontreal-Light.otf") format("opentype"); font-weight: 300; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Neue Montreal"; src: url("Neue Montreal/NeueMontreal-Regular.otf") format("opentype"); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Neue Montreal"; src: url("Neue Montreal/NeueMontreal-Medium.otf") format("opentype"); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Neue Montreal"; src: url("Neue Montreal/NeueMontreal-Bold.otf") format("opentype"); font-weight: 700; font-style: normal; font-display: swap; }
+
+    :root {
+      --bg: #FAF9F5;
+      --card: #ffffff;
+      --image-bg: #f0eee8;
+      --text: #362000;
+      --text-secondary: #704900;
+      --text-tertiary: #704900;
+      --badge-bg: rgba(255, 255, 255, 0.82);
+      --shadow: 0 1px 2px rgba(54,32,0,0.04), 0 4px 16px rgba(54,32,0,0.05);
+      --shadow-hover: 0 2px 4px rgba(54,32,0,0.05), 0 18px 40px rgba(54,32,0,0.12);
+      --focus: #704900;
+      --nav-bg: rgba(250, 249, 245, 0.8);
+      --nav-border: rgba(54, 32, 0, 0.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1308;
+        --card: #241b0e;
+        --image-bg: #2e2415;
+        --text: #FAF9F5;
+        --text-secondary: #d9a95c;
+        --text-tertiary: #d9a95c;
+        --badge-bg: rgba(36, 27, 14, 0.78);
+        --shadow: none;
+        --shadow-hover: 0 18px 40px rgba(0,0,0,0.5);
+        --focus: #d9a95c;
+        --nav-bg: rgba(26, 19, 8, 0.8);
+        --nav-border: rgba(250, 249, 245, 0.08);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Neue Montreal", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.4;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 56px 24px 120px;
+    }
+
+    /* ---- Type hierarchy ---- */
+    .eyebrow {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--text-tertiary);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(44px, 7vw, 80px);
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+    }
+    .subtitle {
+      margin-top: 20px;
+      max-width: 34ch;
+      font-size: clamp(19px, 2.2vw, 24px);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      color: var(--text-secondary);
+    }
+
+    header { margin-bottom: 64px; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--nav-bg);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--nav-border);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      height: 56px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      border-radius: 8px;
+    }
+    .nav a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+    .nav-back { color: var(--text-secondary) !important; transition: transform 0.3s ease; }
+    .nav-back:hover { transform: translateX(-2px); }
+    .nav-back svg { width: 16px; height: 16px; }
+    .nav-profile img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 600px) { .nav-inner { padding: 0 16px; } }
+
+    /* ---- Grid ---- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    /* ---- Card ---- */
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: var(--card);
+      border-radius: 22px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--shadow);
+      transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .card:hover { transform: translateY(-4px) scale(1.01); box-shadow: var(--shadow-hover); }
+    .card:active { transform: scale(0.99); }
+    .card:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+    .media {
+      aspect-ratio: 4 / 5;
+      background: var(--image-bg);
+      overflow: hidden;
+    }
+    .media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .card:hover .media img { transform: scale(1.04); }
+
+    .arrow {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--badge-bg);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      backdrop-filter: saturate(180%) blur(20px);
+      color: var(--text);
+      transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .card:hover .arrow { transform: translate(2px, -2px); }
+    .arrow svg { width: 16px; height: 16px; }
+
+    .info { padding: 20px 22px 24px; }
+    .card-title {
+      font-size: 19px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    .card-meta {
+      margin-top: 6px;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 600px) {
+      main { padding: 40px 16px 80px; }
+      header { margin-bottom: 40px; }
+      .grid { grid-template-columns: 1fr; gap: 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card, .media img, .arrow { transition: none; }
+      .card:hover, .card:hover .media img, .card:hover .arrow { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Site">
+    <div class="nav-inner">
+      <a class="nav-back" href="index.html">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3.5L5.5 8l4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back to home
+      </a>
+      <a class="nav-profile" href="index.html">
+        <span>@aliisastyles</span>
+        <img src="images/profile.jpg" alt="" width="32" height="32">
+      </a>
+    </div>
+  </nav>
+  <main>
+    <header>
+      <p class="eyebrow">Zara Men · Knitwear</p>
+      <h1>Natural Knitwear</h1>
+      <p class="subtitle">These are all cotton or wool blend sweater from Zara Men. I always take the smallest size and hope for a good fit haha.</p>
+    </header>
+
+    <section class="grid" id="grid" aria-label="Products"></section>
+  </main>
+
+  <script>
+    const products = [
+      { title: "Relaxed-Fit-Pullover mit Rippstruktur", color: "Grün", image: "images/02893322.jpg",
+        url: "https://www.zara.com/de/de/relaxed-fit-pullover-mit-rippstruktur-p02893322.html" },
+      { title: "Relaxed-Fit-Cardigan mit Zopfmuster", color: "Cremefarben", image: "images/02893309.jpg",
+        url: "https://www.zara.com/de/de/cardigan-mit-zopfmuster-relaxed-fit-p02893309.html" },
+      { title: "Strickjacke in Relaxed Fit mit Reißverschluss", color: "Khaki", image: "images/06674305.jpg",
+        url: "https://www.zara.com/de/de/strickjacke-mit-reissverschluss-in-relaxed-fit-p06674305.html" },
+      { title: "Strickjacke mit Reißverschluss", color: "Rosa", image: "images/06674305-rosa.jpg",
+        url: "https://www.zara.com/de/de/strickjacke-mit-reissverschluss-in-relaxed-fit-p06674305.html?v1=557695735" },
+      { title: "Pullover mit V-Ausschnitt aus Wollmix", color: "Rot", image: "images/02893355.jpg",
+        url: "https://www.zara.com/de/de/pullover-mit-v-ausschnitt-aus-wollmischung-p02893355.html" },
+      { title: "Pullover mit Strukturmuster und Wolle", color: "Cremefarben", image: "images/03166340.jpg",
+        url: "https://www.zara.com/de/de/strickpullover-mit-strukturmuster-und-wolle-p03166340.html" },
+      { title: "Pullover mit Strukturmuster aus Baumwolle", color: "Marineblau", image: "images/03332302.jpg",
+        url: "https://www.zara.com/de/de/pullover-mit-strukturmuster-aus-baumwolle-p03332302.html" },
+    ];
+
+    const arrow = `<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+    document.getElementById("grid").innerHTML = products.map(p => `
+      <a class="card" href="${p.url}" target="_blank" rel="noopener noreferrer">
+        <div class="media"><img src="${p.image}" alt="${p.title}" loading="lazy"></div>
+        <span class="arrow">${arrow}</span>
+        <div class="info">
+          <h2 class="card-title">${p.title}</h2>
+          <p class="card-meta">${p.color}</p>
+        </div>
+      </a>`).join("");
+  </script>
+</body>
+</html>
